@@ -1,4 +1,4 @@
-package dev.lotr
+package dev.lotr.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dagger.hilt.android.AndroidEntryPoint
-import dev.lotr.ui.theme.ComposeLotrAppTheme
+import dev.lotr.R
+import dev.lotr.presentation.theme.ComposeLotrAppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

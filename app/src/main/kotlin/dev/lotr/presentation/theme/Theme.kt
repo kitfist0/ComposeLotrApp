@@ -1,4 +1,4 @@
-package dev.lotr.ui.theme
+package dev.lotr.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
