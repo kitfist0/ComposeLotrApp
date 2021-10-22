@@ -16,6 +16,7 @@ object Versions {
     object Essential {
         const val Kotlin = "1.5.31"
         const val Coroutines = "1.5.2"
+        const val Serialization = "1.3.0"
         const val Gradle = "7.0.3"
         const val Ktx = "1.6.0"
     }
@@ -48,6 +49,7 @@ object Dependencies {
     val essential = listOf(
         "androidx.core:core-ktx:${Versions.Essential.Ktx}",
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Essential.Coroutines}",
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.Essential.Serialization}",
     )
 
     val compose = listOf(
