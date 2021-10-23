@@ -5,5 +5,5 @@ import dev.lotr.domain.model.Chapter
 
 interface BookAndChapterRepository {
     suspend fun getBooks(): List<Book>
-    suspend fun getChaptersOfOneSpecificBook(bookId: String): List<Chapter>
+    suspend fun getBookChapters(bookId: String): List<Chapter>
 }
