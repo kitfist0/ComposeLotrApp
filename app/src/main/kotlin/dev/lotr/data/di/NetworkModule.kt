@@ -1,4 +1,4 @@
-package dev.lotr.di
+package dev.lotr.data.di
 
 import dagger.Module
 import dagger.Provides
