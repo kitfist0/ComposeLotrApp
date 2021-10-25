@@ -1,8 +1,20 @@
 package dev.lotr.data.remote.model
 
+import dev.lotr.data.remote.model.RemoteChapter.Companion.toDomainModel
 import dev.lotr.domain.model.Chapter
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+@Serializable
+data class BookChaptersResponse(
+    val docs: List<RemoteChapter>,
+) {
+    companion object {
+        fun BookChaptersResponse.toDomainModel(idOfBook: String? = null): List<Chapter> {
+            return docs.map { it.toDomainModel(idOfBook) }
+        }
+    }
+}
 
 @Serializable
 data class RemoteChapter(
