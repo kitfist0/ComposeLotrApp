@@ -31,6 +31,7 @@ object Versions {
     object Network {
         const val OkHttp = "4.9.2"
         const val Retrofit = "2.9.0"
+        const val Converter = "0.8.0"
     }
 
     object Di {
@@ -67,6 +68,7 @@ object Dependencies {
         "com.squareup.okhttp3:okhttp:${Versions.Network.OkHttp}",
         "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OkHttp}",
         "com.squareup.retrofit2:retrofit:${Versions.Network.Retrofit}",
+        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.Network.Converter}",
     )
 
     val ui = listOf(

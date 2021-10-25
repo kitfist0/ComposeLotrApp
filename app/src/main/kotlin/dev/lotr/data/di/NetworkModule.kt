@@ -1,10 +1,14 @@
 package dev.lotr.data.di
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.lotr.data.remote.api.OneApi
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,14 +24,19 @@ object NetworkModule {
         val loggingInterceptor = HttpLoggingInterceptor()
             .apply { level = HttpLoggingInterceptor.Level.BODY }
         return OkHttpClient.Builder()
-            .apply { addInterceptor(loggingInterceptor) }
+            .addInterceptor(loggingInterceptor)
             .build()
     }
 
     @Provides
     @Singleton
+    @ExperimentalSerializationApi
     fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
-        return Retrofit.Builder().client(okHttpClient)
+        val format = Json { ignoreUnknownKeys = true }
+        val mediaType = "application/json".toMediaType()
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .addConverterFactory(format.asConverterFactory(mediaType))
     }
 
     @Provides
