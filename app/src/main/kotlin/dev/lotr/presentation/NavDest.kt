@@ -1,6 +1,6 @@
 package dev.lotr.presentation
 
 enum class NavDest(val route: String) {
-    CHAPTER("chapter"),
+    BOOKS("books"),
     CHAPTERS("chapters"),
 }
