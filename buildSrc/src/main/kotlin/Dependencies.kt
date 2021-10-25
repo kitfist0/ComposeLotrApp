@@ -26,6 +26,7 @@ object Versions {
         const val Activity = "1.3.1"
         const val Lifecycle = "2.4.0-rc01"
         const val Navigation = "2.4.0-alpha10"
+        const val HiltNavigation = "1.0.0-alpha03"
     }
 
     object Network {
@@ -62,6 +63,7 @@ object Dependencies {
         "androidx.compose.runtime:runtime-livedata:${Versions.Compose.Master}",
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.Lifecycle}",
         "androidx.navigation:navigation-compose:${Versions.Compose.Navigation}",
+        "androidx.hilt:hilt-navigation-compose:${Versions.Compose.HiltNavigation}",
     )
 
     val retrofit = listOf(
