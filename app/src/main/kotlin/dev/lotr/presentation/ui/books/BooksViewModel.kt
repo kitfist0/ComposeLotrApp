@@ -7,6 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Book
 import dev.lotr.domain.usecase.GetBooksUseCase
+import dev.lotr.presentation.navigation.NavDest
+import dev.lotr.presentation.navigation.NavManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BooksViewModel @Inject constructor(
     private val getBooksUseCase: GetBooksUseCase,
+    private val navManager: NavManager,
 ) : ViewModel() {
 
     private val _books = MutableStateFlow<List<Book>>(emptyList())
@@ -31,7 +34,7 @@ class BooksViewModel @Inject constructor(
     }
 
     fun onBookClicked(bookId: String) {
-        Log.d(TAG, "bookId: $bookId")
+        navManager.navigate(NavDest.CHAPTERS, bookId)
     }
 
     companion object {
