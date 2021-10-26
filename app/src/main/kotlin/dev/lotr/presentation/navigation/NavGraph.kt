@@ -12,12 +12,12 @@ import dev.lotr.presentation.ui.chapters.ChaptersScreen
 fun NavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = NavDest.BOOKS.toString(),
+        startDestination = NavDest.BOOKS.toRoute(),
     ) {
-        composable(NavDest.BOOKS.toString()) {
+        composable(NavDest.BOOKS.toRoute()) {
             BooksScreen(hiltViewModel())
         }
-        composable("${NavDest.CHAPTERS}/{${NavParams.BOOK_ID}}") {
+        composable(NavDest.CHAPTERS.toRouteWithParamName(NavParams.BOOK_ID)) {
             ChaptersScreen(hiltViewModel())
         }
     }

@@ -9,6 +9,7 @@ import dev.lotr.domain.model.Book
 import dev.lotr.domain.usecase.GetBooksUseCase
 import dev.lotr.presentation.navigation.NavDest
 import dev.lotr.presentation.navigation.NavManager
+import dev.lotr.presentation.navigation.toRouteWithParam
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,7 +35,7 @@ class BooksViewModel @Inject constructor(
     }
 
     fun onBookClicked(bookId: String) {
-        navManager.navigate(NavDest.CHAPTERS, bookId)
+        navManager.navigate(NavDest.CHAPTERS.toRouteWithParam(bookId))
     }
 
     companion object {
