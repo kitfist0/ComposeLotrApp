@@ -22,7 +22,7 @@ class BooksViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _books = MutableStateFlow<List<Book>>(emptyList())
-    val books: StateFlow<List<Book>> get() = _books.asStateFlow()
+    val books: StateFlow<List<Book>> = _books.asStateFlow()
 
     init {
         viewModelScope.launch {

@@ -15,9 +15,7 @@ import androidx.compose.ui.unit.dp
 import dev.lotr.domain.model.Book
 
 @Composable
-fun BooksScreen(
-    viewModel: BooksViewModel,
-) {
+fun BooksScreen(viewModel: BooksViewModel) {
     val books = viewModel.books.collectAsState()
     Body(
         books = books.value,
