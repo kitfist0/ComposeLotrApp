@@ -23,7 +23,7 @@ data class RemoteChapter(
     @SerialName("chapterName")
     val name: String,
     @SerialName("book")
-    val bookId: String?,
+    val bookId: String? = null,
 ) {
     companion object {
         fun RemoteChapter.toDomainModel(idOfBook: String? = null): Chapter {

@@ -17,8 +17,8 @@ fun NavGraph(navController: NavHostController) {
         composable(NavDest.BOOKS.toString()) {
             BooksScreen(hiltViewModel())
         }
-        composable("${NavDest.CHAPTERS}/{id}") {
-            ChaptersScreen(it.arguments?.getString("id").orEmpty())
+        composable("${NavDest.CHAPTERS}/{${NavParams.BOOK_ID}}") {
+            ChaptersScreen(hiltViewModel())
         }
     }
 }
