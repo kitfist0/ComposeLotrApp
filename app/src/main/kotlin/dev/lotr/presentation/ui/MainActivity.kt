@@ -28,9 +28,7 @@ class MainActivity : ComponentActivity() {
             }
 
             lifecycleScope.launchWhenStarted {
-                navManager.routes.collect { route ->
-                    route?.let { navController.navigate(it) }
-                }
+                navManager.routes.collect { navController.navigate(it) }
             }
         }
     }
