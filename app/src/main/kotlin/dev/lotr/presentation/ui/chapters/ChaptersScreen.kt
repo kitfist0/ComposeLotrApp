@@ -1,46 +1,68 @@
 package dev.lotr.presentation.ui.chapters
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.insets.statusBarsPadding
 import dev.lotr.domain.model.Chapter
 
 @Composable
-fun ChaptersScreen(viewModel: ChaptersViewModel) {
+fun ChaptersScreen(
+    viewModel: ChaptersViewModel,
+    modifier: Modifier = Modifier,
+) {
     val chapters = viewModel.chapters.collectAsState()
     Body(
         chapters = chapters.value,
-        onItemClick = { chapterId -> viewModel.onChapterClicked(chapterId) },
+        onChapterClick = { chapterId -> viewModel.onChapterClicked(chapterId) },
+        modifier = modifier,
     )
 }
 
 @Composable
-private fun Body(chapters: List<Chapter>, onItemClick: (chapterId: String) -> Unit) {
-    Surface(
-        color = MaterialTheme.colors.background,
-        modifier = Modifier.fillMaxSize(),
+private fun Body(
+    chapters: List<Chapter>,
+    onChapterClick: (String) -> Unit,
+    modifier: Modifier,
+) {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = modifier.statusBarsPadding(),
     ) {
-        LazyColumn {
-            for (chapter in chapters) {
-                item {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onItemClick.invoke(chapter.id) }
-                            .padding(16.dp),
-                        text = chapter.name,
-                    )
-                }
-            }
+        items(chapters) { chapter ->
+            Text(
+                text = chapter.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onChapterClick.invoke(chapter.id) }
+                    .padding(16.dp)
+            )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ChaptersScreenPreview() {
+    val bookId = "5cf58077b53e011a64671583"
+    Body(
+        chapters = listOf(
+            Chapter("6091b6d6d58360f988133ba1", "The Departure of Boromir", bookId),
+            Chapter("6091b6d6d58360f988133ba2", "The Riders of Rohan", bookId),
+            Chapter("6091b6d6d58360f988133ba3", "The Uruk-Hai", bookId),
+            Chapter("6091b6d6d58360f988133ba4", "Treebeard", bookId),
+            Chapter("6091b6d6d58360f988133ba5", "The White Rider", bookId),
+        ),
+        onChapterClick = {},
+        modifier = Modifier,
+    )
 }
