@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import dev.lotr.presentation.navigation.NavGraph
 import dev.lotr.presentation.navigation.NavManager
@@ -24,7 +25,9 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             ComposeLotrAppTheme {
-                NavGraph(navController)
+                ProvideWindowInsets {
+                    NavGraph(navController)
+                }
             }
 
             lifecycleScope.launchWhenStarted {
