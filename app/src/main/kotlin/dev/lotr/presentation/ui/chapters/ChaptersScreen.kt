@@ -2,17 +2,20 @@ package dev.lotr.presentation.ui.chapters
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.insets.LocalWindowInsets
+import com.google.accompanist.insets.rememberInsetsPaddingValues
 import dev.lotr.domain.model.Chapter
 
 @Composable
@@ -36,11 +39,13 @@ private fun Body(
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.statusBarsPadding(),
+        contentPadding = rememberInsetsPaddingValues(LocalWindowInsets.current.systemBars),
+        modifier = modifier.fillMaxSize(),
     ) {
         items(chapters) { chapter ->
             Text(
                 text = chapter.name,
+                color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onChapterClick.invoke(chapter.id) }

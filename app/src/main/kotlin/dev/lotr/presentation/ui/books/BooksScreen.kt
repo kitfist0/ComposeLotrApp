@@ -2,10 +2,12 @@ package dev.lotr.presentation.ui.books
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -36,11 +38,12 @@ private fun Body(
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.statusBarsPadding(),
+        modifier = modifier.fillMaxSize().statusBarsPadding(),
     ) {
         items(books) { book ->
             Text(
                 text = book.name,
+                color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onBookClick.invoke(book.id) }
