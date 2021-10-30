@@ -21,6 +21,7 @@ import dev.lotr.R
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Chapter
 import dev.lotr.presentation.ui.common.LoadingProgress
+import dev.lotr.presentation.ui.common.ColumnHeader
 
 @Composable
 fun ChaptersScreen(
@@ -50,14 +51,7 @@ private fun Body(
         modifier = modifier.fillMaxSize(),
     ) {
         item {
-            Text(
-                text = stringResource(R.string.chapters),
-                color = MaterialTheme.colors.secondary,
-                style = MaterialTheme.typography.h1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            )
+            ColumnHeader(stringResource(R.string.chapters))
         }
         items(chapters) { chapter ->
             Text(

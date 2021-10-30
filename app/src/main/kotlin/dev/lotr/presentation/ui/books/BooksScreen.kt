@@ -17,6 +17,7 @@ import dev.lotr.R
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Book
 import dev.lotr.presentation.ui.common.LoadingProgress
+import dev.lotr.presentation.ui.common.ColumnHeader
 
 @Composable
 fun BooksScreen(
@@ -47,14 +48,7 @@ private fun Body(
             .statusBarsPadding(),
     ) {
         item {
-            Text(
-                text = stringResource(R.string.app_name),
-                color = MaterialTheme.colors.secondary,
-                style = MaterialTheme.typography.h1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            )
+            ColumnHeader(stringResource(R.string.app_name))
         }
         items(books) { book ->
             Text(
