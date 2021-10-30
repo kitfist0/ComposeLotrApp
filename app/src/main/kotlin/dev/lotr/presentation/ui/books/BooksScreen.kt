@@ -12,9 +12,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
+import dev.lotr.R
 import dev.lotr.domain.model.Book
 
 @Composable
@@ -38,8 +40,20 @@ private fun Body(
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.fillMaxSize().statusBarsPadding(),
+        modifier = modifier
+            .fillMaxSize()
+            .statusBarsPadding(),
     ) {
+        item {
+            Text(
+                text = stringResource(R.string.app_name),
+                color = MaterialTheme.colors.secondary,
+                style = MaterialTheme.typography.h1,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+        }
         items(books) { book ->
             Text(
                 text = book.name,

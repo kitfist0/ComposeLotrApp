@@ -12,10 +12,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
+import dev.lotr.R
 import dev.lotr.domain.model.Chapter
 
 @Composable
@@ -42,6 +44,16 @@ private fun Body(
         contentPadding = rememberInsetsPaddingValues(LocalWindowInsets.current.systemBars),
         modifier = modifier.fillMaxSize(),
     ) {
+        item {
+            Text(
+                text = stringResource(R.string.chapters),
+                color = MaterialTheme.colors.secondary,
+                style = MaterialTheme.typography.h1,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+        }
         items(chapters) { chapter ->
             Text(
                 text = chapter.name,
