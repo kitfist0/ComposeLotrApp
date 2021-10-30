@@ -21,16 +21,13 @@ class ChaptersViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    private val _chapters = MutableStateFlow<List<Chapter>>(emptyList())
-    val chapters: StateFlow<List<Chapter>> = _chapters.asStateFlow()
+    private val _chapters = MutableStateFlow<Result<List<Chapter>>>(Result.Loading)
+    val chapters: StateFlow<Result<List<Chapter>>> = _chapters.asStateFlow()
 
     init {
         val bookId = savedStateHandle.get<String>(NavParams.BOOK_ID).orEmpty()
         viewModelScope.launch {
-            when (val result = getBookChaptersUseCase.invoke(bookId)) {
-                is Result.Error -> Log.d(TAG, "Error: ${result.message}")
-                is Result.Success -> _chapters.value = result.data
-            }
+            _chapters.value = getBookChaptersUseCase.invoke(bookId)
         }
     }
 

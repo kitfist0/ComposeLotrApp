@@ -1,10 +1,7 @@
 package dev.lotr.presentation.ui.books
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
@@ -17,19 +14,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
 import dev.lotr.R
+import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Book
+import dev.lotr.presentation.ui.common.LoadingProgress
 
 @Composable
 fun BooksScreen(
     viewModel: BooksViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val books = viewModel.books.collectAsState()
-    Body(
-        books = books.value,
-        onBookClick = { bookId -> viewModel.onBookClicked(bookId) },
-        modifier,
-    )
+    when (val state = viewModel.books.collectAsState().value) {
+        is Result.Loading -> LoadingProgress(modifier)
+        is Result.Success -> Body(
+            books = state.data,
+            onBookClick = { bookId -> viewModel.onBookClicked(bookId) },
+            modifier,
+        )
+        is Result.Error -> {}
+    }
 }
 
 @Composable

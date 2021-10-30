@@ -18,19 +18,24 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import dev.lotr.R
+import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Chapter
+import dev.lotr.presentation.ui.common.LoadingProgress
 
 @Composable
 fun ChaptersScreen(
     viewModel: ChaptersViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val chapters = viewModel.chapters.collectAsState()
-    Body(
-        chapters = chapters.value,
-        onChapterClick = { chapterId -> viewModel.onChapterClicked(chapterId) },
-        modifier = modifier,
-    )
+    when (val state = viewModel.chapters.collectAsState().value) {
+        is Result.Loading -> LoadingProgress(modifier)
+        is Result.Success -> Body(
+            chapters = state.data,
+            onChapterClick = { chapterId -> viewModel.onChapterClicked(chapterId) },
+            modifier,
+        )
+        is Result.Error -> {}
+    }
 }
 
 @Composable

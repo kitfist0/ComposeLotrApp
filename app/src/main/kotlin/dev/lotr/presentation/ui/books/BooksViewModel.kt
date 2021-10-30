@@ -1,6 +1,5 @@
 package dev.lotr.presentation.ui.books
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,23 +21,16 @@ class BooksViewModel @Inject constructor(
     private val navManager: NavManager,
 ) : ViewModel() {
 
-    private val _books = MutableStateFlow<List<Book>>(emptyList())
-    val books: StateFlow<List<Book>> = _books.asStateFlow()
+    private val _books = MutableStateFlow<Result<List<Book>>>(Result.Loading)
+    val books: StateFlow<Result<List<Book>>> = _books.asStateFlow()
 
     init {
         viewModelScope.launch {
-            when (val result = getBooksUseCase.invoke(null)) {
-                is Result.Error -> Log.d(TAG, "Error: ${result.message}")
-                is Result.Success -> _books.value = result.data
-            }
+            _books.value = getBooksUseCase.invoke(null)
         }
     }
 
     fun onBookClicked(bookId: String) {
         navManager.navigate(NavDest.CHAPTERS.toRouteWithParam(bookId))
-    }
-
-    companion object {
-        private const val TAG = "BOOKS_VIEW_MODEL"
     }
 }
