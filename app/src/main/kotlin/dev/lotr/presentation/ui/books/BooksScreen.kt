@@ -1,11 +1,8 @@
 package dev.lotr.presentation.ui.books
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -18,6 +15,7 @@ import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Book
 import dev.lotr.presentation.ui.common.LoadingProgress
 import dev.lotr.presentation.ui.common.ColumnHeader
+import dev.lotr.presentation.ui.common.ColumnSimpleItem
 
 @Composable
 fun BooksScreen(
@@ -51,13 +49,10 @@ private fun Body(
             ColumnHeader(stringResource(R.string.app_name))
         }
         items(books) { book ->
-            Text(
+            ColumnSimpleItem(
+                itemId = book.id,
                 text = book.name,
-                color = MaterialTheme.colors.onPrimary,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onBookClick.invoke(book.id) }
-                    .padding(16.dp)
+                onItemClick = onBookClick,
             )
         }
     }

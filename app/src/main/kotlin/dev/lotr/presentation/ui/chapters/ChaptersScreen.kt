@@ -1,14 +1,9 @@
 package dev.lotr.presentation.ui.chapters
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -22,6 +17,7 @@ import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Chapter
 import dev.lotr.presentation.ui.common.LoadingProgress
 import dev.lotr.presentation.ui.common.ColumnHeader
+import dev.lotr.presentation.ui.common.ColumnSimpleItem
 
 @Composable
 fun ChaptersScreen(
@@ -54,13 +50,10 @@ private fun Body(
             ColumnHeader(stringResource(R.string.chapters))
         }
         items(chapters) { chapter ->
-            Text(
+            ColumnSimpleItem(
+                itemId = chapter.id,
                 text = chapter.name,
-                color = MaterialTheme.colors.onPrimary,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onChapterClick.invoke(chapter.id) }
-                    .padding(16.dp)
+                onItemClick = onChapterClick,
             )
         }
     }

@@ -7,10 +7,10 @@
     <application
         android:name=".LotrApp"
         android:allowBackup="false"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ComposeLotrApp">
+        android:theme="@style/Theme.LotrApp.NoActionBar">
 
         <activity
             android:name=".presentation.ui.MainActivity"

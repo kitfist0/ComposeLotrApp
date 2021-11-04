@@ -3,6 +3,7 @@ package dev.lotr.presentation.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.Surface
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
@@ -10,7 +11,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import dev.lotr.presentation.navigation.NavGraph
 import dev.lotr.presentation.navigation.NavManager
-import dev.lotr.presentation.theme.ComposeLotrAppTheme
+import dev.lotr.presentation.theme.LotrAppTheme
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
@@ -27,8 +28,10 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             ProvideWindowInsets {
-                ComposeLotrAppTheme {
-                    NavGraph(navController)
+                LotrAppTheme {
+                    Surface {
+                        NavGraph(navController)
+                    }
                 }
             }
 

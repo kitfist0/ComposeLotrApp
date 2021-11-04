@@ -28,6 +28,7 @@ object Versions {
         const val Lifecycle = "2.4.0-rc01"
         const val Navigation = "2.4.0-alpha10"
         const val HiltNavigation = "1.0.0-alpha03"
+        const val Material3 = "1.0.0-alpha01"
     }
 
     object Network {
@@ -41,7 +42,7 @@ object Versions {
     }
 
     object Ui {
-        const val Material = "1.4.0"
+        const val Material3 = "1.5.0-alpha05"
     }
 }
 
@@ -59,7 +60,7 @@ object Dependencies {
         "androidx.compose.ui:ui:${Versions.Compose.Master}",
         "androidx.compose.ui:ui-tooling:${Versions.Compose.Master}",
         "androidx.compose.compiler:compiler:${Versions.Compose.Master}",
-        "androidx.compose.material:material:${Versions.Compose.Master}",
+        "androidx.compose.material3:material3:${Versions.Compose.Material3}",
         "androidx.activity:activity-compose:${Versions.Compose.Activity}",
         "androidx.compose.runtime:runtime-livedata:${Versions.Compose.Master}",
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.Lifecycle}",
@@ -76,6 +77,6 @@ object Dependencies {
     )
 
     val ui = listOf(
-        "com.google.android.material:material:${Versions.Ui.Material}",
+        "com.google.android.material:material:${Versions.Ui.Material3}",
     )
 }
