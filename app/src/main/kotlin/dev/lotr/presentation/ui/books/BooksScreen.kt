@@ -16,6 +16,7 @@ import dev.lotr.domain.model.Book
 import dev.lotr.presentation.ui.common.LoadingProgress
 import dev.lotr.presentation.ui.common.ColumnHeader
 import dev.lotr.presentation.ui.common.ColumnSimpleItem
+import dev.lotr.presentation.ui.common.ErrorScreen
 
 @Composable
 fun BooksScreen(
@@ -29,7 +30,11 @@ fun BooksScreen(
             onBookClick = { bookId -> viewModel.onBookClicked(bookId) },
             modifier,
         )
-        is Result.Error -> {}
+        is Result.Error -> ErrorScreen(
+            message = state.message,
+            onRetryClicked = {},
+            modifier,
+        )
     }
 }
 

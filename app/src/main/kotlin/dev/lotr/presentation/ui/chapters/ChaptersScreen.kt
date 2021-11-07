@@ -18,6 +18,7 @@ import dev.lotr.domain.model.Chapter
 import dev.lotr.presentation.ui.common.LoadingProgress
 import dev.lotr.presentation.ui.common.ColumnHeader
 import dev.lotr.presentation.ui.common.ColumnSimpleItem
+import dev.lotr.presentation.ui.common.ErrorScreen
 
 @Composable
 fun ChaptersScreen(
@@ -31,7 +32,11 @@ fun ChaptersScreen(
             onChapterClick = { chapterId -> viewModel.onChapterClicked(chapterId) },
             modifier,
         )
-        is Result.Error -> {}
+        is Result.Error -> ErrorScreen(
+            message = state.message,
+            onRetryClicked = {},
+            modifier,
+        )
     }
 }
 

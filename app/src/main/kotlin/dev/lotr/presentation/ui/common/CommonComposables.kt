@@ -1,12 +1,16 @@
 package dev.lotr.presentation.ui.common
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,7 +30,7 @@ fun LoadingProgress(modifier: Modifier) {
             text = stringResource(R.string.loading),
             style = MaterialTheme.typography.displaySmall,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }
@@ -38,6 +42,61 @@ private fun LoadingProgressPreview() {
 }
 
 @Composable
+fun ErrorScreen(
+    message: String,
+    onRetryClicked: () -> Unit,
+    modifier: Modifier,
+) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .fillMaxSize()
+            .statusBarsPadding(),
+    ) {
+        Image(
+            painterResource(R.mipmap.ic_mordor),
+            contentDescription = null,
+            modifier = Modifier
+                .alpha(0.8f)
+                .padding(2.dp),
+        )
+        Text(
+            text = message,
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    start = 16.dp,
+                    top = 8.dp,
+                    end = 16.dp,
+                    bottom = 16.dp,
+                ),
+        )
+        OutlinedButton(
+            onClick = { onRetryClicked.invoke() },
+            modifier = Modifier.padding(8.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.retry),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ErrorScreenPreview() {
+    ErrorScreen(
+        message = "Something went wrong :/",
+        onRetryClicked = {},
+        Modifier,
+    )
+}
+
+@Composable
 fun ColumnHeader(text: String) {
     Text(
         text = text,
@@ -45,7 +104,7 @@ fun ColumnHeader(text: String) {
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(16.dp),
     )
 }
 
@@ -67,7 +126,7 @@ fun ColumnSimpleItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick.invoke(itemId) }
-            .padding(16.dp)
+            .padding(16.dp),
     )
 }
 
