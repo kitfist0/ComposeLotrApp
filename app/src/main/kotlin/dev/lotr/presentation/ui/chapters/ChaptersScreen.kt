@@ -25,7 +25,7 @@ fun ChaptersScreen(
     viewModel: ChaptersViewModel,
     modifier: Modifier = Modifier,
 ) {
-    when (val state = viewModel.chapters.collectAsState().value) {
+    when (val state = viewModel.stateFlow.collectAsState().value) {
         is Result.Loading -> LoadingProgress(modifier)
         is Result.Success -> Body(
             chapters = state.data,
@@ -34,7 +34,7 @@ fun ChaptersScreen(
         )
         is Result.Error -> ErrorScreen(
             message = state.message,
-            onRetryClicked = {},
+            onRetryClicked = { viewModel.fetchData() },
             modifier,
         )
     }

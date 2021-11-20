@@ -23,7 +23,7 @@ fun BooksScreen(
     viewModel: BooksViewModel,
     modifier: Modifier = Modifier,
 ) {
-    when (val state = viewModel.books.collectAsState().value) {
+    when (val state = viewModel.stateFlow.collectAsState().value) {
         is Result.Loading -> LoadingProgress(modifier)
         is Result.Success -> Body(
             books = state.data,
@@ -32,7 +32,7 @@ fun BooksScreen(
         )
         is Result.Error -> ErrorScreen(
             message = state.message,
-            onRetryClicked = {},
+            onRetryClicked = { viewModel.fetchData() },
             modifier,
         )
     }
