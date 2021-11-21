@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlinx-serialization")
@@ -11,15 +11,11 @@ android {
         minSdk = Application.minSdk
         targetSdk = Application.targetSdk
         compileSdk = Application.compileSdk
-        versionCode = Application.versionCode
-        versionName = Application.versionName
     }
 
     buildTypes {
         release {
-            isDebuggable = false
             isMinifyEnabled = true
-            isShrinkResources = true
         }
     }
 
@@ -37,25 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = Application.jvmTarget
     }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.Compose.Master
-    }
 }
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":data"))
-
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
 
     Dependencies.essential.forEach(::implementation)
-    Dependencies.compose.forEach(::implementation)
-    Dependencies.retrofit.forEach(::implementation)
-    Dependencies.ui.forEach(::implementation)
 }
