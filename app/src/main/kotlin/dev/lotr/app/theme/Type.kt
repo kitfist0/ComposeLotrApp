@@ -1,4 +1,4 @@
-package dev.lotr.presentation.theme
+package dev.lotr.app.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import dev.lotr.R
+import dev.lotr.app.R
 
 private val MontserratFontFamily = FontFamily(
     Font(R.font.montserrat_regular),

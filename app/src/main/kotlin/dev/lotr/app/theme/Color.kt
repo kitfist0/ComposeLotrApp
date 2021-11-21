@@ -1,4 +1,4 @@
-package dev.lotr.presentation.theme
+package dev.lotr.app.theme
 
 import androidx.compose.ui.graphics.Color
 

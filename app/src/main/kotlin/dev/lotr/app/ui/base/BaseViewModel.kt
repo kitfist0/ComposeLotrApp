@@ -1,4 +1,4 @@
-package dev.lotr.presentation.ui.base
+package dev.lotr.app.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

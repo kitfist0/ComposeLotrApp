@@ -1,4 +1,4 @@
-package dev.lotr.presentation.ui
+package dev.lotr.app.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,9 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
-import dev.lotr.presentation.navigation.NavGraph
-import dev.lotr.presentation.navigation.NavManager
-import dev.lotr.presentation.theme.LotrAppTheme
+import dev.lotr.app.navigation.NavGraph
+import dev.lotr.app.navigation.NavManager
+import dev.lotr.app.theme.LotrAppTheme
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 

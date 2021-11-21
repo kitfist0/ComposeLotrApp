@@ -1,4 +1,4 @@
-package dev.lotr.presentation.navigation
+package dev.lotr.app.navigation
 
 enum class NavDest {
     BOOKS,

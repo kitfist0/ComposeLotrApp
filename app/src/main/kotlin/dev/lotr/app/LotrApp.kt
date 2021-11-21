@@ -1,4 +1,4 @@
-package dev.lotr
+package dev.lotr.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

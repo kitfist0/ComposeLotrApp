@@ -1,4 +1,4 @@
-package dev.lotr.presentation.ui.chapters
+package dev.lotr.app.ui.chapters
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,13 +12,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
-import dev.lotr.R
+import dev.lotr.app.R
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Chapter
-import dev.lotr.presentation.ui.common.LoadingProgress
-import dev.lotr.presentation.ui.common.ColumnHeader
-import dev.lotr.presentation.ui.common.ColumnSimpleItem
-import dev.lotr.presentation.ui.common.ErrorScreen
+import dev.lotr.app.ui.common.LoadingProgress
+import dev.lotr.app.ui.common.ColumnHeader
+import dev.lotr.app.ui.common.ColumnSimpleItem
+import dev.lotr.app.ui.common.ErrorScreen
 
 @Composable
 fun ChaptersScreen(

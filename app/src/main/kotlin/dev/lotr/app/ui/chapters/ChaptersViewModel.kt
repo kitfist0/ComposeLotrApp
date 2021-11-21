@@ -1,4 +1,4 @@
-package dev.lotr.presentation.ui.chapters
+package dev.lotr.app.ui.chapters
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
@@ -6,8 +6,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Chapter
 import dev.lotr.domain.usecase.GetBookChaptersUseCase
-import dev.lotr.presentation.navigation.NavParams
-import dev.lotr.presentation.ui.base.BaseViewModel
+import dev.lotr.app.navigation.NavParams
+import dev.lotr.app.ui.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel

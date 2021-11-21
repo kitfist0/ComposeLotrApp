@@ -1,10 +1,10 @@
-package dev.lotr.presentation.di
+package dev.lotr.app.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.lotr.presentation.navigation.NavManager
+import dev.lotr.app.navigation.NavManager
 import javax.inject.Singleton
 
 @Module

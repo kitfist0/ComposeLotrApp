@@ -1,4 +1,4 @@
-package dev.lotr.presentation.ui.common
+package dev.lotr.app.ui.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
-import dev.lotr.R
+import dev.lotr.app.R
 
 @Composable
 fun LoadingProgress(modifier: Modifier) {

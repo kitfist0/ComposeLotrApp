@@ -1,4 +1,4 @@
-package dev.lotr.presentation.navigation
+package dev.lotr.app.navigation
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
