@@ -22,13 +22,13 @@ object Versions {
     }
 
     object Compose {
-        const val Master = "1.0.4"
-        const val Accompanist = "0.20.0"
-        const val Activity = "1.3.1"
-        const val Lifecycle = "2.4.0-rc01"
-        const val Navigation = "2.4.0-alpha10"
-        const val HiltNavigation = "1.0.0-alpha03"
-        const val Material3 = "1.0.0-alpha01"
+        const val Master = "1.0.5"
+        const val Accompanist = "0.21.4-beta"
+        const val Activity = "1.4.0"
+        const val Lifecycle = "2.4.0"
+        const val Navigation = "2.4.0-beta02"
+        const val HiltNavigation = "1.0.0-beta01"
+        const val Material3 = "1.0.0-alpha02"
     }
 
     object Network {
@@ -38,11 +38,11 @@ object Versions {
     }
 
     object Di {
-        const val Hilt = "2.39.1"
+        const val Hilt = "2.40.5"
     }
 
     object Ui {
-        const val Material3 = "1.5.0-alpha05"
+        const val Material3 = "1.6.0-alpha01"
     }
 }
 
