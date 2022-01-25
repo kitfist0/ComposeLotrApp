@@ -1,11 +1,10 @@
 package dev.lotr.app.ui.chapters
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -13,12 +12,10 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import dev.lotr.app.R
+import dev.lotr.app.ui.common.*
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.model.Chapter
-import dev.lotr.app.ui.common.LoadingProgress
-import dev.lotr.app.ui.common.ColumnHeader
-import dev.lotr.app.ui.common.ColumnSimpleItem
-import dev.lotr.app.ui.common.ErrorScreen
+import kotlinx.coroutines.launch
 
 @Composable
 fun ChaptersScreen(
@@ -46,7 +43,11 @@ private fun Body(
     onChapterClick: (String) -> Unit,
     modifier: Modifier,
 ) {
+    val listState = rememberLazyListState()
+    val firstItemIndex = remember { mutableStateOf(listState.firstVisibleItemIndex) }
+    val coroutineScope = rememberCoroutineScope()
     LazyColumn(
+        state = listState,
         verticalArrangement = Arrangement.spacedBy(4.dp),
         contentPadding = rememberInsetsPaddingValues(LocalWindowInsets.current.systemBars),
         modifier = modifier.fillMaxSize(),
@@ -60,6 +61,13 @@ private fun Body(
                 text = chapter.name,
                 onItemClick = onChapterClick,
             )
+        }
+        if (chapters.isNotEmpty() && listState.firstVisibleItemIndex != firstItemIndex.value) {
+            item {
+                ColumnFooterButton(text = stringResource(R.string.scroll_to_top)) {
+                    coroutineScope.launch { listState.scrollToItem(0) }
+                }
+            }
         }
     }
 }

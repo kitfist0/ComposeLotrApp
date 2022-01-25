@@ -3,6 +3,7 @@ package dev.lotr.app.ui.common
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -94,6 +95,33 @@ private fun ErrorScreenPreview() {
         onRetryClicked = {},
         Modifier,
     )
+}
+
+@Composable
+fun ColumnFooterButton(
+    text: String,
+    onClicked: () -> Unit,
+) {
+    Box(
+        contentAlignment = Alignment.CenterEnd,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        ExtendedFloatingActionButton(
+            text = { Text(text) },
+            onClick = { onClicked.invoke() },
+            containerColor = MaterialTheme.colorScheme.surface,
+            contentColor = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(16.dp)
+                .height(36.dp),
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ColumnFooterButtonPreview() {
+    ColumnFooterButton("Scroll up") {}
 }
 
 @Composable
