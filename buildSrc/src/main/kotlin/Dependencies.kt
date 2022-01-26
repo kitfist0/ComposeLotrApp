@@ -44,6 +44,14 @@ object Versions {
     object Ui {
         const val Material3 = "1.6.0-alpha02"
     }
+
+    object Test {
+        const val Junit = "4.13.2"
+        const val Androidx = "2.1.0"
+        const val Coroutines = "1.6.0"
+        const val Kotest = "5.1.0"
+        const val Mockk = "1.12.2"
+    }
 }
 
 object Dependencies {
@@ -78,5 +86,15 @@ object Dependencies {
 
     val ui = listOf(
         "com.google.android.material:material:${Versions.Ui.Material3}",
+    )
+
+    val testing = listOf(
+        "junit:junit:${Versions.Test.Junit}",
+        "androidx.arch.core:core-testing:${Versions.Test.Androidx}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.Coroutines}",
+        "io.kotest:kotest-runner-junit5:${Versions.Test.Kotest}",
+        "io.kotest:kotest-assertions-core:${Versions.Test.Kotest}",
+        "io.kotest:kotest-property:${Versions.Test.Kotest}",
+        "io.mockk:mockk:${Versions.Test.Mockk}",
     )
 }
