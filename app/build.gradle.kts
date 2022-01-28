@@ -45,6 +45,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.Compose.Master
     }
+
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {

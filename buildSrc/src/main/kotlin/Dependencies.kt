@@ -46,9 +46,6 @@ object Versions {
     }
 
     object Test {
-        const val Junit = "4.13.2"
-        const val Androidx = "2.1.0"
-        const val Coroutines = "1.6.0"
         const val Kotest = "5.1.0"
         const val Mockk = "1.12.2"
     }
@@ -89,12 +86,12 @@ object Dependencies {
     )
 
     val testing = listOf(
-        "junit:junit:${Versions.Test.Junit}",
-        "androidx.arch.core:core-testing:${Versions.Test.Androidx}",
-        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.Coroutines}",
+        "io.mockk:mockk:${Versions.Test.Mockk}",
+        "io.mockk:mockk-agent-jvm:${Versions.Test.Mockk}",
         "io.kotest:kotest-runner-junit5:${Versions.Test.Kotest}",
         "io.kotest:kotest-assertions-core:${Versions.Test.Kotest}",
         "io.kotest:kotest-property:${Versions.Test.Kotest}",
-        "io.mockk:mockk:${Versions.Test.Mockk}",
+        "org.jetbrains.kotlin:kotlin-reflect:${Versions.Essential.Kotlin}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Essential.Coroutines}",
     )
 }
