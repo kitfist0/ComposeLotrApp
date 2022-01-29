@@ -1,7 +1,8 @@
-package dev.lotr.app.ui.books
+package dev.lotr.app.ui.chapters
 
+import androidx.lifecycle.SavedStateHandle
 import dev.lotr.domain.common.Result
-import dev.lotr.domain.usecase.GetBooksUseCase
+import dev.lotr.domain.usecase.GetBookChaptersUseCase
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.mockk.*
@@ -10,9 +11,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
 
 @ExperimentalCoroutinesApi
-class BooksViewModelTest : FreeSpec({
+class ChaptersViewModelTest : FreeSpec({
 
-    "Feature: Books" - {
+    "Feature: Chapters" - {
         // region Common
         lateinit var testDispatcher: TestDispatcher
         beforeContainer {
@@ -24,14 +25,14 @@ class BooksViewModelTest : FreeSpec({
         }
         // endregion
 
-        "Scenario: Fetch books" - {
+        "Scenario: Fetch chapters" - {
             // region Variables
-            lateinit var viewModel: BooksViewModel
+            lateinit var viewModel: ChaptersViewModel
             // endregion
-            "When: Server returns books" {
+            "When: Server returns chapters" {
                 viewModel = getViewModelForCurrentScenario(
-                    getBooksUseCase = mockk {
-                        coEvery { this@mockk.invoke(null) } returns Result.Success(emptyList())
+                    getBookChaptersUseCase = mockk {
+                        coEvery { this@mockk.invoke(any()) } returns Result.Success(emptyList())
                     }
                 )
             }
@@ -41,8 +42,8 @@ class BooksViewModelTest : FreeSpec({
             }
             "When: Server returns error" {
                 viewModel = getViewModelForCurrentScenario(
-                    getBooksUseCase = mockk {
-                        coEvery { this@mockk.invoke(null) } returns Result.Error("")
+                    getBookChaptersUseCase = mockk {
+                        coEvery { this@mockk.invoke(any()) } returns Result.Error("")
                     }
                 )
             }
@@ -55,7 +56,10 @@ class BooksViewModelTest : FreeSpec({
 })
 
 private fun getViewModelForCurrentScenario(
-    getBooksUseCase: GetBooksUseCase = mockk(),
-): BooksViewModel {
-    return BooksViewModel(getBooksUseCase, mockk())
+    getBookChaptersUseCase: GetBookChaptersUseCase = mockk(),
+): ChaptersViewModel {
+    val savedStateHandle = mockk<SavedStateHandle> {
+        every { get<String>(any()) } returns ""
+    }
+    return ChaptersViewModel(getBookChaptersUseCase, savedStateHandle)
 }
