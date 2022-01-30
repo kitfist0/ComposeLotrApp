@@ -1,5 +1,6 @@
 package dev.lotr.app.ui.books
 
+import dev.lotr.app.navigation.NavManager
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.usecase.GetBooksUseCase
 import io.kotest.core.spec.style.FreeSpec
@@ -51,11 +52,30 @@ class BooksViewModelTest : FreeSpec({
                 isError.shouldBeTrue()
             }
         }
+
+        "Scenario: Book list item click" - {
+            // region Variables
+            val navManager = mockk<NavManager> {
+                every { navigate(any()) } returns Unit
+            }
+            val viewModel = getViewModelForCurrentScenario(
+                getBooksUseCase = mockk(relaxed = true),
+                navManager = navManager,
+            )
+            // endregion
+            "When: Book list item clicked" {
+                viewModel.onBookClicked("")
+            }
+            "Then: Navigate to next screen" {
+                verify { navManager.navigate(any()) }
+            }
+        }
     }
 })
 
 private fun getViewModelForCurrentScenario(
     getBooksUseCase: GetBooksUseCase = mockk(),
+    navManager: NavManager = mockk(),
 ): BooksViewModel {
-    return BooksViewModel(getBooksUseCase, mockk())
+    return BooksViewModel(getBooksUseCase, navManager)
 }
