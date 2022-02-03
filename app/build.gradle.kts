@@ -45,6 +45,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.Compose.Master
     }
+
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -58,4 +64,6 @@ dependencies {
     Dependencies.compose.forEach(::implementation)
     Dependencies.retrofit.forEach(::implementation)
     Dependencies.ui.forEach(::implementation)
+
+    Dependencies.testing.forEach(::testImplementation)
 }

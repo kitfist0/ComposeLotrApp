@@ -44,6 +44,11 @@ object Versions {
     object Ui {
         const val Material3 = "1.6.0-alpha02"
     }
+
+    object Test {
+        const val Kotest = "5.1.0"
+        const val Mockk = "1.12.2"
+    }
 }
 
 object Dependencies {
@@ -78,5 +83,15 @@ object Dependencies {
 
     val ui = listOf(
         "com.google.android.material:material:${Versions.Ui.Material3}",
+    )
+
+    val testing = listOf(
+        "io.mockk:mockk:${Versions.Test.Mockk}",
+        "io.mockk:mockk-agent-jvm:${Versions.Test.Mockk}",
+        "io.kotest:kotest-runner-junit5:${Versions.Test.Kotest}",
+        "io.kotest:kotest-assertions-core:${Versions.Test.Kotest}",
+        "io.kotest:kotest-property:${Versions.Test.Kotest}",
+        "org.jetbrains.kotlin:kotlin-reflect:${Versions.Essential.Kotlin}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Essential.Coroutines}",
     )
 }
