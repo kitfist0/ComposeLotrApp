@@ -3,10 +3,9 @@ package dev.lotr.app.ui.common
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -108,6 +107,7 @@ fun ColumnFooterButton(
     ) {
         ExtendedFloatingActionButton(
             text = { Text(text) },
+            icon = { Icon(imageVector = Icons.Default.KeyboardArrowUp, contentDescription = null) },
             onClick = { onClicked.invoke() },
             containerColor = MaterialTheme.colorScheme.surface,
             contentColor = MaterialTheme.colorScheme.primary,
