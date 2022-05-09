@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.lotr.app.navigation.NavGraph
 import dev.lotr.app.navigation.NavManager
 import dev.lotr.app.theme.LotrAppTheme
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint

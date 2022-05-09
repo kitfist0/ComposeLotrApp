@@ -26,12 +26,7 @@ fun LoadingProgress(modifier: Modifier) {
             .fillMaxSize()
             .statusBarsPadding(),
     ) {
-        Text(
-            text = stringResource(R.string.loading),
-            style = MaterialTheme.typography.displaySmall,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
-        )
+        CircularProgressIndicator()
     }
 }
 
