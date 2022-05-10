@@ -46,7 +46,7 @@ object Versions {
     }
 
     object Test {
-        const val Kotest = "5.1.0"
+        const val Kotest = "5.3.0"
         const val Mockk = "1.12.2"
     }
 }
