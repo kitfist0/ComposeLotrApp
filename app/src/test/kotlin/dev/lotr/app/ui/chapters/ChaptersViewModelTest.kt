@@ -1,29 +1,19 @@
 package dev.lotr.app.ui.chapters
 
 import androidx.lifecycle.SavedStateHandle
+import dev.lotr.app.ui.setUnconfinedDispatcherAsMainBeforeEachScenario
 import dev.lotr.domain.common.Result
 import dev.lotr.domain.usecase.GetBookChaptersUseCase
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.mockk.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.*
 
 @ExperimentalCoroutinesApi
 class ChaptersViewModelTest : FreeSpec({
 
     "Feature: Chapters" - {
-        // region Common
-        lateinit var testDispatcher: TestDispatcher
-        beforeContainer {
-            testDispatcher = UnconfinedTestDispatcher()
-            Dispatchers.setMain(testDispatcher)
-        }
-        afterContainer {
-            Dispatchers.resetMain()
-        }
-        // endregion
+        setUnconfinedDispatcherAsMainBeforeEachScenario()
 
         "Scenario: Fetch chapters" - {
             // region Variables
