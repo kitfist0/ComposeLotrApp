@@ -21,6 +21,11 @@ object Versions {
         const val Ktx = "1.7.0"
     }
 
+    object CodeStyle {
+        const val Spotless = "6.3.0"
+        const val Ktlint = "0.45.2"
+    }
+
     object Compose {
         const val Master = "1.1.1"
         const val Accompanist = "0.24.7-alpha"
