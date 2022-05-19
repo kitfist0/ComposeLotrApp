@@ -11,12 +11,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
 import dev.lotr.app.R
-import dev.lotr.domain.common.Result
-import dev.lotr.domain.model.Book
-import dev.lotr.app.ui.common.LoadingProgress
 import dev.lotr.app.ui.common.ColumnHeader
 import dev.lotr.app.ui.common.ColumnSimpleItem
 import dev.lotr.app.ui.common.ErrorScreen
+import dev.lotr.app.ui.common.LoadingProgress
+import dev.lotr.domain.common.Result
+import dev.lotr.domain.model.Book
 
 @Composable
 fun BooksScreen(

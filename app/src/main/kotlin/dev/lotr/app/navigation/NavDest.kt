@@ -10,9 +10,9 @@ fun NavDest.toRoute(): String {
 }
 
 fun NavDest.toRouteWithParam(param: String): String {
-    return "${toRoute()}/${param}"
+    return "${toRoute()}/$param"
 }
 
 fun NavDest.toRouteWithParamName(paramName: String): String {
-    return "${toRoute()}/{${paramName}}"
+    return "${toRoute()}/{$paramName}"
 }
