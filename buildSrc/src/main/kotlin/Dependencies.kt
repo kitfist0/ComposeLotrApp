@@ -22,7 +22,7 @@ object Versions {
     }
 
     object CodeStyle {
-        const val Spotless = "6.3.0"
+        const val Spotless = "6.6.1"
         const val Ktlint = "0.45.2"
     }
 
