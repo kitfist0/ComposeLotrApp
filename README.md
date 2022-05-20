@@ -3,9 +3,6 @@ This repository contains a simple Android app to help you learn about Compose in
 
 <img src="https://media.giphy.com/media/KU2yaZ11VfldHGBvXA/giphy.gif" width="500">
 
-## Requirements
-To try out these sample apps, you need to use [Android Studio Arctic Fox](https://developer.android.com/studio). That’s because when you use Android Studio to develop your app with Jetpack Compose, you can benefit from smart editor features, such as New Project templates and the ability to immediately preview your Compose UI.
-
 ## Contributions
 
 If you've found an error in this sample, please file an issue. Patches are encouraged and may be submitted by forking this project and
