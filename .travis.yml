@@ -1,0 +1,54 @@
+language: android
+dist: trusty
+jdk: oraclejdk8
+
+env:
+  global:
+    - ANDROID_API=30
+    - ANDROID_BUILD_TOOLS=30.0.2
+    - EMULATOR_API=22
+    - RELEASE_APK_DIR=app/build/outputs/apk/release
+
+# Android SDK components
+android:
+  components:
+    - tools
+    - platform-tools
+    # The BuildTools version used by your project
+    - build-tools-$ANDROID_BUILD_TOOLS
+    # The SDK version used to compile your project
+    - android-$ANDROID_API
+    # Additional components
+    - extra-google-m2repository
+    - extra-android-m2repository
+    # Specify at least one system image, if you need to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-$EMULATOR_API
+  licenses:
+    # Dealing with Licenses
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+
+# Emulator Management: Create, Start and Wait
+before_script:
+  - echo no | android create avd --force -n test -t android-${EMULATOR_API} --abi armeabi-v7a
+  - emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
+script:
+  - ./gradlew spotlessCheck
+  - ./gradlew clean build
+  - ./gradlew test
+  - ./gradlew build check
+
+# Caching
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
