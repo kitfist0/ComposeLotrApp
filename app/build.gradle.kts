@@ -7,6 +7,8 @@ plugins {
 }
 
 android {
+    namespace = "dev.lotr.app"
+
     defaultConfig {
         minSdk = Application.minSdk
         targetSdk = Application.targetSdk
