@@ -44,7 +44,7 @@ private fun Body(
     modifier: Modifier,
 ) {
     val listState = rememberLazyListState()
-    val firstItemIndex = remember { mutableStateOf(listState.firstVisibleItemIndex) }
+    val firstItemIndex = remember { mutableIntStateOf(listState.firstVisibleItemIndex) }
     val coroutineScope = rememberCoroutineScope()
     LazyColumn(
         state = listState,
@@ -62,7 +62,7 @@ private fun Body(
                 onItemClick = onChapterClick,
             )
         }
-        if (chapters.isNotEmpty() && listState.firstVisibleItemIndex != firstItemIndex.value) {
+        if (chapters.isNotEmpty() && listState.firstVisibleItemIndex != firstItemIndex.intValue) {
             item {
                 ColumnFooterButton(text = stringResource(R.string.scroll_to_top)) {
                     coroutineScope.launch { listState.scrollToItem(0) }

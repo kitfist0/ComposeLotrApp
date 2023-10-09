@@ -8,7 +8,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.lotr.data.remote.api.OneApi
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.Cache
 import okhttp3.CacheControl
@@ -50,7 +49,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    @ExperimentalSerializationApi
     fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         val format = Json { ignoreUnknownKeys = true }
         val mediaType = "application/json".toMediaType()

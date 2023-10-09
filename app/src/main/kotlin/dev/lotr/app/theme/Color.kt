@@ -2,7 +2,7 @@ package dev.lotr.app.theme
 
 import androidx.compose.ui.graphics.Color
 
-//region Light
+// region Light
 val LightPrimary = Color(0xFF006c54)
 val LightOnPrimary = Color(0xFFffffff)
 val LightPrimaryContainer = Color(0xFF7ef8d3)
@@ -28,9 +28,9 @@ val LightOnSurfaceVariant = Color(0xFF3f4945)
 val LightOutline = Color(0xFF6f7974)
 val LightInverseOnSurface = Color(0xFFeff1ee)
 val LightInverseSurface = Color(0xFF2d312f)
-//endregion
+// endregion
 
-//region Dark
+// region Dark
 val DarkPrimary = Color(0xFF61dbb8)
 val DarkOnPrimary = Color(0xFF00382a)
 val DarkPrimaryContainer = Color(0xFF00513f)
@@ -56,7 +56,4 @@ val DarkOnSurfaceVariant = Color(0xFFbfc9c3)
 val DarkOutline = Color(0xFF89938e)
 val DarkInverseOnSurface = Color(0xFF191c1b)
 val DarkInverseSurface = Color(0xFFe1e3e0)
-//endregion
-
-val Seed = Color(0xFF00856a)
-val Error = Color(0xFFba1b1b)
+// endregion
