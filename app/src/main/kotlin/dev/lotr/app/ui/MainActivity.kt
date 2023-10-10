@@ -7,7 +7,6 @@ import androidx.compose.material3.Surface
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
-import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import dev.lotr.app.navigation.NavGraph
 import dev.lotr.app.navigation.NavManager
@@ -26,11 +25,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
 
-            ProvideWindowInsets {
-                LotrAppTheme {
-                    Surface {
-                        NavGraph(navController)
-                    }
+            LotrAppTheme {
+                Surface {
+                    NavGraph(navController)
                 }
             }
 

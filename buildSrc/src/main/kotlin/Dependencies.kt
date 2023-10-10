@@ -29,7 +29,6 @@ object Versions {
 
     object Compose {
         const val Master = "1.5.3"
-        const val Accompanist = "0.31.5-beta"
         const val Activity = "1.8.0"
         const val Lifecycle = "2.4.1"
         const val Navigation = "2.7.4"
@@ -77,7 +76,6 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.Lifecycle}",
         "androidx.navigation:navigation-compose:${Versions.Compose.Navigation}",
         "androidx.hilt:hilt-navigation-compose:${Versions.Compose.HiltNavigation}",
-        "com.google.accompanist:accompanist-insets:${Versions.Compose.Accompanist}",
     )
 
     val retrofit = listOf(
