@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.LaunchedEffect
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.lotr.app.navigation.NavGraph
@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
 
-            lifecycleScope.launchWhenStarted {
+            LaunchedEffect(true) {
                 navManager.routes.collect { navController.navigate(it) }
             }
         }
