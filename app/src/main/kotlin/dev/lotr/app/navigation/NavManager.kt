@@ -5,10 +5,15 @@ import kotlinx.coroutines.flow.receiveAsFlow
 
 class NavManager {
 
+    private var prevRoute: String? = null
+
     private val _routes = Channel<String>()
     val routes = _routes.receiveAsFlow()
 
     fun navigate(route: String) {
-        _routes.trySend(route)
+        if (prevRoute != route) {
+            _routes.trySend(route)
+            prevRoute = route
+        }
     }
 }
